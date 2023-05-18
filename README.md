@@ -60,3 +60,26 @@ void DFS(Graph G,int v){
 		}
 	}
 }
+void BFS_MTN_Distance(Graph G,int u){
+	for(int i=0;i<G.vexnum;++i){
+		d[i] = *;
+		path[i] = -1;
+	}
+	d[u] = 0;
+	visited[u] = TRUE;
+	EnQueue(Q,u);
+	while(!IsEmpty(Q))
+	{
+		DeQueue(Q,u);
+		for(int w=FirstNeighbor(G,u),w>=0;w=NextNeighbor(G,u,w))
+		{
+			if(!visited[w])
+			{
+				d[w] = d[u] + 1;
+				path[w] = u;
+				visited[w] = TRUE;
+				EnQueue(Q,w);
+			}
+		}
+	}
+}
